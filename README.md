@@ -12,15 +12,15 @@ verification. But any service that uses these allow files can utilise the servic
 Installation
 ------------
 
-Copy script to /usr/local/bin
-Chmod 755 /usr/local/bin/geoiplookup
-Update the file /etc/hosts.deny with sshd: ALL
+Copy script to /usr/local/bin<br>
+Chmod 755 /usr/local/bin/geoiplookup<br>
+Update the file /etc/hosts.deny with sshd: ALL<br>
 Update the file /etc/hosts.allow with sshd: ALL: aclexec /usr/local/bin/geoiplookup %a
 
 Usage
 -----
 
-Update the ALLOWED_COUNTRIES at top of script. Format is 2 letter country code. 
+Update the ALLOWED_COUNTRIES at top of script. Format is 2 letter country code. <br>
 ALLOWED_COUNTRIES="AU NZ"
 
 geoiplookup x.x.x.x
