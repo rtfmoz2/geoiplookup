@@ -1,25 +1,18 @@
-GeoIP Protection Python Script
-==========================================
+# GeoIP Protection Python Script #
 
-Description
------------
-
+## Description
 This is a Python script to check an IP address against MaxMind DB files. The script 
 includes a debug option to display the country codes from the DB lookup. Returns exit 
 code 0 on a permitted country. This script is designed to be used as part of SSH host
 verification. But any service that uses these allow files can utilise the service.
 
-Installation
-------------
-
+## Installation
 Copy script to /usr/local/bin<br>
 Chmod 755 /usr/local/bin/geoiplookup<br>
 Update the file /etc/hosts.deny with sshd: ALL<br>
 Update the file /etc/hosts.allow with sshd: ALL: aclexec /usr/local/bin/geoiplookup %a
 
-Usage
------
-
+## Usage
 Update the ALLOWED_COUNTRIES at top of script. Format is 2 letter country code. <br>
 ALLOWED_COUNTRIES="AU NZ"
 
@@ -28,9 +21,7 @@ geoiplookup x.x.x.x
 Returns exit code of 0 on allowed country otherwise 1. The -d provides additional debug 
 information which should not be used in production.
 
-Example
--------
-
+### Example
 ALLOWED_COUNTRIES="AU NZ"
 
 geoiplookup -d 8.8.8.8<br>
@@ -44,9 +35,10 @@ Return code: 0
 geoiplookup 202.158.214.106<br>
 Return code: 0
 
-Requirements
-------------
+### Testing
+Running on Debian 10 buster as SSH geoip protection.
 
+## Requirements
 This code requires Python 3.5+. Older versions are not supported.
 
 You must first install the maxmind DB. Register a user on the maxmind 
@@ -65,14 +57,8 @@ To make sure it builds with the library above. It will tell you if it fails.
 Once it builds without problems<br>
 sudo python setup.py install
 
-Testing
--------
-Running on Debian 10 buster as SSH geoip protection.
-
-Support
--------
-
+## Support
 Please report all issues with this code using the `GitHub issue tracker
 <https://github.com/rtfmoz2/geoiplookup/issues>`_
 
-Please note, support is limited. I figured this all out after a beer in one night.
+Please note, support is limited. I figured this out after a beer one night.
