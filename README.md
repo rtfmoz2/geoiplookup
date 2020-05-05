@@ -65,6 +65,10 @@ To make sure it builds with the library above. It will tell you if it fails.
 Once it builds without problems<br>
 sudo python setup.py install
 
+Testing
+-------
+Running on Debian 10 buster as SSH geoip protection.
+
 Support
 -------
 
