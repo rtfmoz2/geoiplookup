@@ -43,14 +43,14 @@ You must first install the maxmind DB. Register a user on the maxmind website an
 install the free database into your system using one of the provided deb packages
 from https://github.com/maxmind/geoipupdate/releases/latest
 
-sudo dpkg -i geoipupdate_4.3.0_linux_amd64.deb
+sudo dpkg -i geoipupdate_4.3.0_linux_amd64.deb<br>
 Once installed update the /etc/GeoIP.conf with your free license from maxmind.com. 
 Look for My License Key on the navigation menus. Typically it wont exist so you need select
-generate new license key.
-Now run the update to check its all working. 
+generate new license key.<br>
+One you have updated the config file, run the update to check its all working. 
 sudo geoipupdate -v
 
-Now you install the maxmind C library for faster lookups and a compiler. <br>
+Now install the maxmind C library for faster lookups and a compiler. <br>
 sudo apt install libmaxminddb0 libmaxminddb-dev build-essentials
 
 Finally you have to install the maxmind Python module<br>
