@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+# Lookup the IP address against the maxmind geoIP database
+import json
+import sys
+import maxminddb
+
+ALLOWED_COUNTRIES="AU NZ"
+debug = 0
+arg = sys.argv[1]
+if arg == "-d":
+  debug = 1
+  arg = sys.argv[2]
+
+reader = maxminddb.open_database('/usr/share/GeoIP/GeoLite2-City.mmdb')
+geolookup = reader.get(arg)
+reader.close()
+
+if debug:
+        print("iso_code="+geolookup['country']['iso_code'])
+#       print(json.dumps(geolookup['country']))
+
+# iterate through allowed countries until we find one that exists
+for country in ALLOWED_COUNTRIES.split():
+    if country in geolookup['country']['iso_code']:
+        sys.exit(0)
+
+# country not found so exit with error code
+sys.exit(1)
