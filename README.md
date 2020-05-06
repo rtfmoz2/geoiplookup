@@ -16,7 +16,7 @@ chmod 755 /usr/local/bin/geoiplookup
 Update the file /etc/hosts.deny  
 `sshd: ALL`<br>
 Update the file /etc/hosts.allow   
-`sshd: ALL: aclexec /usr/local/bin/geoiplookup %a`
+`sshd: ALL: aclexec python3 /usr/local/bin/geoiplookup.py %a`
 ## Usage
 Update the ALLOWED_COUNTRIES at top of script. Format is 2 letter country code. <br>
 ALLOWED_COUNTRIES="AU NZ"
