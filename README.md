@@ -13,9 +13,9 @@ Copy script to /usr/local/bin and update the permissions.
 sudo cp geoiplookup /usr/local/bin
 chmod 755 /usr/local/bin/geoiplookup
 ```
-Update the file /etc/hosts.deny<br>
+Update the file /etc/hosts.deny  
 `sshd: ALL`<br>
-Update the file /etc/hosts.allow<br> 
+Update the file /etc/hosts.allow   
 `sshd: ALL: aclexec /usr/local/bin/geoiplookup %a`
 ## Usage
 Update the ALLOWED_COUNTRIES at top of script. Format is 2 letter country code. <br>
