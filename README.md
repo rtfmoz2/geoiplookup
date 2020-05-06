@@ -9,7 +9,7 @@ that uses these allow files can utilise the service.
 The script provides a debug option to display the country codes from the DB lookup. 
 ## Installation
 Copy script to /usr/local/bin and update the permissions.<br>
-`sudo cp geoiplookup /usr/local/bin
+`sudo cp geoiplookup /usr/local/bin<br>
 chmod 755 /usr/local/bin/geoiplookup`<br>
 Update the file /etc/hosts.deny<br>
 `sshd: ALL`<br>
