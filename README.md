@@ -76,7 +76,6 @@ To make sure it builds with the C library above. It will tell you if it fails.
 Once it builds without problems<br>
 sudo python setup.py install
 ## Support
-Please report all issues with this code using the `GitHub issue tracker
-<https://github.com/rtfmoz2/geoiplookup/issues>`
+Please report all issues with this code using the [GitHub issue tracker](https://github.com/rtfmoz2/geoiplookup/issues)
 
 Please note, support is limited. I figured this out after a beer one night.
