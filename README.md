@@ -1,7 +1,7 @@
 # GeoIP Protection Python Script #
 
 ## Description
-This is a Python script to check an IP address against MaxMind free GeoIP database. 
+This is a Python script to check an IP address against MaxMind free GeoIP database. The builtin geoip features of iptables use geoip v1 which is now depreciated. This uses the current geoip v2 database.
 
 This script is designed to be used as part of SSH host verification. But any service 
 that uses these allow files can utilise the service.
