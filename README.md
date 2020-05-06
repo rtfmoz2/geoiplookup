@@ -8,7 +8,7 @@ that uses these allow files can utilise the service.
 
 The script provides a debug option to display the country codes from the DB lookup. 
 ## Installation
-Copy script to /usr/local/bin and update the permissions.<br>
+Copy script to /usr/local/bin and update the permissions.  
 ```bash
 sudo cp geoiplookup /usr/local/bin
 chmod 755 /usr/local/bin/geoiplookup
