@@ -21,7 +21,8 @@ Update the file /etc/hosts.allow<br>
 Update the ALLOWED_COUNTRIES at top of script. Format is 2 letter country code. <br>
 ALLOWED_COUNTRIES="AU NZ"
 
-```geoiplookup [-d] x.x.x.x
+```
+geoiplookup [-d] x.x.x.x
 ```
 
 Returns exit code of 0 on allowed country otherwise 1. The -d provides additional debug 
