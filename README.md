@@ -9,8 +9,10 @@ that uses these allow files can utilise the service.
 The script provides a debug option to display the country codes from the DB lookup. 
 ## Installation
 Copy script to /usr/local/bin and update the permissions.<br>
-`sudo cp geoiplookup /usr/local/bin`<br>
-`chmod 755 /usr/local/bin/geoiplookup`<br>
+```bash
+sudo cp geoiplookup /usr/local/bin
+chmod 755 /usr/local/bin/geoiplookup
+```
 Update the file /etc/hosts.deny<br>
 `sshd: ALL`<br>
 Update the file /etc/hosts.allow<br> 
@@ -19,7 +21,7 @@ Update the file /etc/hosts.allow<br>
 Update the ALLOWED_COUNTRIES at top of script. Format is 2 letter country code. <br>
 ALLOWED_COUNTRIES="AU NZ"
 
-geoiplookup [-d] x.x.x.x
+```geoiplookup [-d] x.x.x.x```
 
 Returns exit code of 0 on allowed country otherwise 1. The -d provides additional debug 
 information which should not be used in production. Don't use this option
@@ -27,15 +29,15 @@ in the hosts.allow file.
 ### Example
 ALLOWED_COUNTRIES="AU NZ"
 
-geoiplookup -d 8.8.8.8<br>
-iso_code=US<br>
+```geoiplookup -d 8.8.8.8
+iso_code=US```
 Return code: 1
 
-geoiplookup -d 202.158.214.106<br>
-iso_code=AU<br>
+```geoiplookup -d 202.158.214.106
+iso_code=AU```
 Return code: 0
 
-geoiplookup 202.158.214.106<br>
+```geoiplookup 202.158.214.106```
 Return code: 0
 ### Testing
 Running on Debian 10 buster as SSH geoip protection.
