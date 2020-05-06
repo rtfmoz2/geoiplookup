@@ -9,9 +9,9 @@ that uses these allow files can utilise the service.
 The script provides a debug option to display the country codes from the DB lookup. 
 ## Installation
 Copy script to /usr/local/bin and update the permissions.<br>
-`chmod 755 /usr/local/bin/geoiplookup`
+`chmod 755 /usr/local/bin/geoiplookup`<br>
 Update the file /etc/hosts.deny<br>
-`sshd: ALL`
+`sshd: ALL`<br>
 Update the file /etc/hosts.allow<br> 
 `sshd: ALL: aclexec /usr/local/bin/geoiplookup %a`
 ## Usage
