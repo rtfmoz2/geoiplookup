@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Lookup the IP address against the maxmind geoIP database
 import json
 import ipaddress
