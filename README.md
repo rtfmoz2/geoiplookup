@@ -8,10 +8,12 @@ that uses these allow files can utilise the service.
 
 The script provides a debug option to display the country codes from the DB lookup. 
 ## Installation
-Copy script to /usr/local/bin<br>
-chmod 755 /usr/local/bin/geoiplookup<br>
-Update the file /etc/hosts.deny with sshd: ALL<br>
-Update the file /etc/hosts.allow with sshd: ALL: aclexec /usr/local/bin/geoiplookup %a
+Copy script to /usr/local/bin and update the permissions.<br>
+`chmod 755 /usr/local/bin/geoiplookup`
+Update the file /etc/hosts.deny<br>
+`sshd: ALL`
+Update the file /etc/hosts.allow<br> 
+`sshd: ALL: aclexec /usr/local/bin/geoiplookup %a`
 ## Usage
 Update the ALLOWED_COUNTRIES at top of script. Format is 2 letter country code. <br>
 ALLOWED_COUNTRIES="AU NZ"
