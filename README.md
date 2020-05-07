@@ -19,11 +19,19 @@ Update the file /etc/hosts.deny
 Update the file /etc/hosts.allow   
 `sshd: ALL: aclexec python3 /usr/local/bin/geoiplookup %a`
 ## Usage
-Update the ALLOWED_COUNTRIES at top of script. Format is 2 letter country code. <br>
-ALLOWED_COUNTRIES="AU NZ"
+Update the ALLOWED_COUNTRIES variable at top of script. Format is 2 letter country code.  
+
+ALLOWED_COUNTRIES="AU NZ US GB PL SE"
 
 ```
-geoiplookup [-d] x.x.x.x
+usage: geoiplookup [-h] [-d] address
+
+positional arguments:
+  address      check the address against the geoip db
+
+optional arguments:
+  -h, --help   show this help message and exit
+  -d, --debug  display debug information
 ```
 
 Returns exit code of 0 on allowed country otherwise 1. The -d provides additional debug 
