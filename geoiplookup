@@ -9,7 +9,7 @@ log.setLevel(logging.INFO)
 console = logging.StreamHandler()
 syslog = logging.handlers.SysLogHandler()
 
-# ip address check
+# ip address validation
 def address(string):
   if not ipaddress.ip_address(string):
     msg = "%r is not an ip address" % string
