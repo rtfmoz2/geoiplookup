@@ -1,51 +1,73 @@
 #!/usr/bin/python3
 # Lookup the IP address against the maxmind geoIP database
-import json
-import ipaddress
-import sys
-import syslog
-import maxminddb
+import sys, logging, logging.handlers, argparse
+import maxminddb, json, ipaddress
 
+# setup logging
+log = logging.getLogger(__name__)
+log.setLevel(logging.INFO)
+console = logging.StreamHandler()
+syslog = logging.handlers.SysLogHandler()
+
+# ip address check
+def address(string):
+  if not ipaddress.ip_address(string):
+    msg = "%r is not an ip address" % string
+    raise argparse.ArgumentTypeError(msg)
+  return string
+
+# command line parsing
+parser = argparse.ArgumentParser()
+parser.add_argument("address", type=address, help="check the address against the geoip db")
+parser.add_argument("-d", "--debug", help="display debug information", action="store_true")
+args = parser.parse_args()
+
+# log only log to syslog unless debugging
+log.addHandler(syslog)
+if args.debug:
+  log.setLevel(logging.DEBUG)
+  log.addHandler(console)
+  
 ALLOWED_COUNTRIES="AU NZ US GB SE PL"
-debug = 0
-arg = sys.argv[1]
-if arg == "-d":
-  debug = 1
-  arg = sys.argv[2]
+log.debug("Allowed Countries = " + ALLOWED_COUNTRIES)
 
 # ignore private address space
-if ipaddress.ip_address(arg).is_private:
+if ipaddress.ip_address(args.address).is_private:
+  log.debug('Ignoring private address space - connection allowed')
   sys.exit(0)
 
 # open DB and lookup address
 reader = maxminddb.open_database('/usr/share/GeoIP/GeoLite2-City.mmdb')
-geolookup = reader.get(arg)
+geolookup = reader.get(args.address)
 reader.close()
 
 # process the reply
-if type(geolookup) is dict:
+if type(geolookup) is dict: 
   if 'country' in geolookup:
     if 'iso_code' in geolookup['country']:
       iso = geolookup['country']['iso_code']
+      country = geolookup['country']['names']['en']
+      log.debug("ISO name found as " + iso + ". Country name found as " + country + ".")
     else:
-      syslog.syslog('iso code not found')
+      log.info('ISO not found')
       sys.exit(1)
+
   else:
-    syslog.syslog('country not found')
+    log.info('Country not found')
     sys.exit(1)
+
 else:
-  syslog.syslog('empty response')
+  log.info('Empty response')
   sys.exit(1)
 
-if debug:
-        print("iso_code="+iso)
-#       print(json.dumps(geolookup['country']))
+log.debug(json.dumps(geolookup['country']))
 
 # iterate through allowed countries until we find one that exists
-for country in ALLOWED_COUNTRIES.split():
-    if country in iso:
-        sys.exit(0)
+for alpha2 in ALLOWED_COUNTRIES.split():
+  if alpha2 in iso:
+    log.debug('Access ALLOWED from ' + args.address + ' from country ' + country)
+    sys.exit(0)
 
 # country not found so exit with error code
-syslog.syslog('Access denied from country '+iso)
+log.info('Access DENIED from ' + args.address + ' from country ' + country)
 sys.exit(1)
