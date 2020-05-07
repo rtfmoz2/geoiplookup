@@ -8,6 +8,7 @@ that uses these allow files can utilise the service.
 
 The script provides a debug option to display the country codes from the DB lookup. 
 ## Installation
+Please make sure the requirments are met below.  
 Copy script to /usr/local/bin and update the permissions.  
 ```bash
 sudo cp geoiplookup /usr/local/bin
@@ -63,18 +64,18 @@ generate new license key.<br>
 One you have updated the config file, run the update to check its all working. 
 sudo geoipupdate -v
 
-Now install the maxmind C library for faster lookups and a compiler. <br>
+Now install the maxmind C library for faster lookups and a compiler.  
 sudo apt install libmaxminddb0 libmaxminddb-dev build-essentials
 
-Finally you have to install the maxmind Python module<br>
-https://github.com/maxmind/MaxMind-DB-Reader-python/archive/master.zip<br>
-Extract the zip<br>
+Finally you have to install the maxmind Python module  
+https://github.com/maxmind/MaxMind-DB-Reader-python/archive/master.zip  
+Extract the zip  
 Change to the directory and then run<br>
-python setup.py build<br>
+python3 setup.py build  
 To make sure it builds with the C library above. It will tell you if it fails.
 
-Once it builds without problems<br>
-sudo python setup.py install
+Once it builds without problems  
+sudo python3 setup.py install
 ## Support
 Please report all issues with this code using the [GitHub issue tracker](https://github.com/rtfmoz2/geoiplookup/issues)
 
