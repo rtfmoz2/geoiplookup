@@ -3,8 +3,8 @@
 ## Description
 This is a Python script to check an IP address against MaxMind free GeoIP database. The builtin geoip features of iptables use geoip v1 which is now depreciated. This uses the current geoip v2 database.
 
-This script is designed to be used as part of SSH host verification. But any service 
-that uses these allow files can utilise the service.
+This script is designed to be used as part of connection verification for any linux service that supports tcp wrappers. To find out if your service does perform the following command  
+> *ldd $(which service) | grep libwrap.so* 
 
 The script provides a debug option to display the country codes from the DB lookup. 
 ## Installation
