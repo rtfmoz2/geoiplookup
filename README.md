@@ -95,6 +95,7 @@ May  7 23:15:51 localhost  {"geoname_id": 2017370, "iso_code": "RU", "names": {"
 May  7 23:15:51 Access DENIED from 1.2.3.4 from country Russia
 ```
 Test 4 - Denied Region  
+```
 May  7 23:15:57 Access DENIED from 1.2.3.4 from country Russia
 ```
 ### Output
